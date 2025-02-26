@@ -1,0 +1,61 @@
+---
+title: "World Development Indicators Analysis"
+author: "Brian Tekadtuera"
+date: 02/25/2025
+format: 
+    revealjs:
+        theme: dracula
+        transition: fade
+---
+
+# Introduction
+- Overview of World Development Indicators (2022)
+- Focus on economic and social indicators
+
+# Key Indicators
+- **GDP per Capita**
+- **Inflation Rate**
+- **Unemployment Rate**
+
+# Data Overview
+
+```{r setup, include=FALSE}
+library(tidyverse)
+library(knitr)
+
+# Load Data
+df <- read.csv("wdi.csv")
+
+# Select relevant columns
+df_selected <- df %>% select(country, gdp_per_capita, inflation_rate, unemployment_rate)
+```
+
+```{r echo=FALSE}
+summary(df_selected)
+```
+
+# Visualizations
+## GDP Per Capita Distribution
+```{r, echo=FALSE}
+ggplot(df_selected, aes(x=gdp_per_capita)) +
+  geom_histogram(binwidth=1000, fill="blue", alpha=0.7) +
+  labs(title="Distribution of GDP Per Capita (2022)", x="GDP Per Capita (USD)", y="Count")
+```
+
+## GDP vs Inflation Rate
+```{r, echo=FALSE}
+ggplot(df_selected, aes(x=gdp_per_capita, y=inflation_rate)) +
+  geom_point(color="red", alpha=0.6) +
+  labs(title="GDP Per Capita vs. Inflation Rate", x="GDP Per Capita (USD)", y="Inflation Rate (%)")
+```
+
+## GDP vs Unemployment Rate
+```{r, echo=FALSE}
+ggplot(df_selected, aes(x=gdp_per_capita, y=unemployment_rate)) +
+  geom_point(color="red", alpha=0.6) +
+  labs(title="GDP Per Capita vs. Inflation Rate", x="GDP Per Capita (USD)", y="Inflation Rate (%)")
+```
+
+# Conclusion
+- Economic disparities exist across countries
+- Further research can analyze regional trends

@@ -1,0 +1,85 @@
+---
+title: "World Development Indicators Analysis"
+author: "Brian Tekadtuera"
+date: 02/25/2025
+format: 
+  html: default
+  pdf: default
+editor: visual
+bibliography: references.bib
+---
+
+```{r}
+library(tidyverse)
+
+library(knitr)
+
+# Load Data
+
+df <- read.csv("wdi.csv")
+
+# Select relevant columns
+
+df_selected <- df %>% select(country, gdp_per_capita, inflation_rate, unemployment_rate)
+```
+
+```{r}
+summary(df_selected)
+```
+
+## GDP Per Capita Distribution
+
+```{r gdp_plot, echo=FALSE}
+library(ggplot2)
+
+ggplot(df_selected, aes(x=gdp_per_capita)) +
+
+geom_histogram(binwidth=1000, fill="blue", alpha=0.7) +
+
+labs(title="Distribution of GDP Per Capita (2022)", x="GDP Per Capita (USD)", y="Count")
+```
+::: {#fig-gdp-per-capita .figure}
+_Figure 1: Distribution of GDP per capita for various countries in 2022._
+:::
+
+```{r}
+
+```
+
+## GDP vs Inflation Rate
+
+```{r scatter_plot2, echo=FALSE}
+ggplot(df_selected, aes(x=gdp_per_capita, y=inflation_rate)) +
+
+geom_point(color="red", alpha=0.6) +
+
+labs(title="GDP Per Capita vs. Inflation Rate", x="GDP Per Capita (USD)", y="Inflation Rate (%)")
+```
+::: {#fig-gdp-inflation .figure}
+_Figure 2: Distribution of GDP per capita for various countries in 2022._ [@worldbank2022]
+:::
+
+```{r scatter_plot, echo=FALSE}
+ggplot(df_selected, aes(x=gdp_per_capita, y=unemployment_rate)) +
+
+geom_point(color="red", alpha=0.6) +
+
+labs(title="GDP Per Capita vs. Unemployment Rate", x="GDP Per Capita (USD)", y="Unemployment Rate (%)")
+```
+::: {#fig-gdp-unemployment .figure}
+_Figure 2: Distribution of GDP per capita for various countries in 2022._
+:::
+
+
+
+| Indicator             | Mean   | Median | Min    | Max    |
+|-----------------------|--------|--------|--------|--------|
+| GDP Per Capita (USD)  | XXXX.X | XXXX.X | XXXX.X | XXXX.X |
+| Inflation Rate (%)    | XX.XX  | XX.XX  | XX.XX  | XX.XX  |
+| Unemployment Rate (%) | XX.XX  | XX.XX  | XX.XX  | XX.XX  |
+
+The scatter plot in @fig-gdp-unemployment highlights a positive correlation between GDP per capita and life expectancy.
+
+# Conclusion
+
+This report provided a brief overview of economic indicators from the dataset. Further analysis could explore trends across different regions.
