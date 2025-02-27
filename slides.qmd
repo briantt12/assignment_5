@@ -57,5 +57,6 @@ ggplot(df_selected, aes(x=gdp_per_capita, y=unemployment_rate)) +
 ```
 
 # Conclusion
-- Economic disparities exist across countries
-- Further research can analyze regional trends
+- The histogram in @fig-gdp-per-capita shows that the majority of countries have a GDP per capita of between 0-25000, with many outliers
+- The scatter plot in @fig-gdp-inflation highlights a negative correlation between GDP per capita and inflation rate rate.
+- The scatter plot in @fig-gdp-unemployment highlights a negative correlation between GDP per capita and unemployment rate.
